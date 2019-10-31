@@ -1,7 +1,7 @@
 # Curriculum Web
 
 
-[Ivan Garcia](https://davidgm09.github.io/)
+[Ivan Garcia](https://ivangarcia-git.github.io/)
 
 [David Garcia](https://davidgm09.github.io/)
 
