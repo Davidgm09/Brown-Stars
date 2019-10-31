@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>login</title>
-	<script type="text/javascript" src="../codi.js"></script>
+	<script type="text/javascript" src="validacion_login.js"></script>
 </head>
 <body>
 	<?php
