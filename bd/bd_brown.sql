@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2019 a las 16:33:47
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.2
+-- Tiempo de generación: 05-11-2019 a las 16:55:15
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,12 +44,36 @@ CREATE TABLE `incidencia` (
 
 CREATE TABLE `recursos` (
   `id_recurso` int(11) NOT NULL,
-  `nom_rec` varchar(20) NOT NULL,
+  `nom_rec` varchar(50) NOT NULL,
   `disp_rec` enum('Disponible','Ocupado') NOT NULL,
   `tipo_rec` enum('Sala Multidisciplinaria','Sala Informatica','Taller de Cocina','Despacho','Sala de actos','Sala de reuniones','Proyector','Portatil','Movil') NOT NULL,
-  `imagen_rec` varchar(50) NOT NULL,
+  `imagen_rec` varchar(100) NOT NULL,
   `desc_rec` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `recursos`
+--
+
+INSERT INTO `recursos` (`id_recurso`, `nom_rec`, `disp_rec`, `tipo_rec`, `imagen_rec`, `desc_rec`) VALUES
+(1, 'Sala Multidisciplinària A', 'Disponible', 'Sala Multidisciplinaria', './img/recursos/SalaMultA.png', ''),
+(2, 'Sala Multidisciplinària B', 'Disponible', 'Sala Multidisciplinaria', './img/recursos/SalaMultB.png', ''),
+(3, 'Sala Multidisciplinària C', 'Disponible', 'Sala Multidisciplinaria', './img/recursos/SalaMultC.png', ''),
+(4, 'Sala Multidisciplinària D', 'Disponible', 'Sala Multidisciplinaria', './img/recursos/SalaMultD.png', ''),
+(5, 'Sala informática A', 'Disponible', 'Sala Informatica', './img/recursos/SalaInfoA.png', ''),
+(6, 'Sala informática B', 'Disponible', 'Sala Informatica', './img/recursos/SalaInfoB.png', ''),
+(7, 'Despacho A', 'Disponible', 'Despacho', './img/recursos/DespachoA.png', ''),
+(8, 'Despacho B', 'Disponible', 'Despacho', './img/recursos/DespachoB.png', ''),
+(9, 'Taller de cocina', 'Disponible', 'Taller de Cocina', './img/recursos/TallerCocina.png', ''),
+(10, 'Salón de Actos', 'Disponible', 'Sala de actos', './img/recursos/SalonActos.png', ''),
+(11, 'Sala de reuniones', 'Disponible', 'Sala de reuniones', './img/recursos/SalaReuniones.png', ''),
+(12, 'Proyector A', 'Disponible', 'Proyector', './img/recursos/ProyectorA.png', ''),
+(13, 'Proyector B', 'Disponible', 'Proyector', './img/recursos/ProyectorB.png', ''),
+(14, 'Portátil A', 'Disponible', 'Portatil', './img/recursos/PortatilA.png', ''),
+(15, 'Portátil B', 'Disponible', 'Portatil', './img/recursos/PortatilB.png', ''),
+(16, 'Portátil C', 'Disponible', 'Portatil', './img/recursos/PortatilC.png', ''),
+(17, 'Móvil A', 'Disponible', 'Movil', './img/recursos/MovilA.png', ''),
+(18, 'Móvil B', 'Disponible', 'Movil', './img/recursos/MovilB.png', '');
 
 -- --------------------------------------------------------
 
@@ -79,6 +103,13 @@ CREATE TABLE `usuarios` (
   `nom_usu` varchar(50) NOT NULL,
   `pass_usu` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `nom_usu`, `pass_usu`) VALUES
+(1, 'admin', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -125,7 +156,7 @@ ALTER TABLE `incidencia`
 -- AUTO_INCREMENT de la tabla `recursos`
 --
 ALTER TABLE `recursos`
-  MODIFY `id_recurso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_recurso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva`
@@ -137,7 +168,7 @@ ALTER TABLE `reserva`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
