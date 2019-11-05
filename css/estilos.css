@@ -1,3 +1,23 @@
 body {
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+.header {
+  width: 100%;
+  display: flex;
+}
+.header .head {
+  width: 50%;
+}
+.header .head a {
+  float: right;
+}
+.home {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+.home .division {
+  width: 50%;
 }
