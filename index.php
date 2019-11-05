@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
 </head>
+
 <body>
-    
+
     <!-- ////////////////INICIO Header//////////////// -->
     <div class="header">
         <div class="head logo">
             <!-- <p>Izquierda</p> -->
         </div>
         <div class="head login">
-            <a href="./login/index.php"><p>Inicia sesión!</p></a>
+            <a href="./login/index.php">
+                <p>Inicia sesión!</p>
+            </a>
         </div>
     </div>
 
@@ -22,7 +26,7 @@
         <!-- Division del header en dos partes verticales -->
         <div class="division left">
             <!-- Filtros de busqueda -->
-                <!-- <div class="cont-filtros">
+            <!-- <div class="cont-filtros">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sodales mauris et ornare pharetra. Quisque blandit risus vitae ornare feugiat. Nullam at justo pharetra, egestas libero nec, posuere sapien. Pellentesque vulputate faucibus libero, sed finibus diam egestas quis. Praesent tellus mi, venenatis a libero at, maximus imperdiet elit. Nunc varius metus at elementum venenatis. Sed mattis enim dolor, a aliquet sapien tempor suscipit. </p>
                 </div> -->
 
@@ -50,4 +54,5 @@
     </div style="height: 500px;">
 
 </body>
+
 </html>

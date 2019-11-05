@@ -5,10 +5,10 @@ $user = $_REQUEST['user'];
 $pass = $_REQUEST['password'];
 $encript = md5($pass);
 
-$queryid = "SELECT nom_usu FROM usuarios WHERE nom_usu='$user'";
+$queryid = "SELECT id_usuario FROM usuarios WHERE nom_usu='$user'";
 $resultid = mysqli_query($conn,$queryid);
 $rowid = mysqli_fetch_array($resultid);
-$iduser = $rowid['id_user'];
+$iduser = $rowid['id_usuario'];
 $complogin = $user;
 
 //Entra si está configurada la variable del formulario del login
