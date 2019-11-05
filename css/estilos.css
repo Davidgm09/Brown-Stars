@@ -1,4 +1,11 @@
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'), local('Raleway-Regular'), url(https://fonts.gstatic.com/s/raleway/v14/1Ptug8zYS_SKggPNyC0ISg.ttf) format('truetype');
+}
 body {
+  font-family: 'Raleway';
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -6,6 +13,7 @@ body {
 .header {
   width: 100%;
   display: flex;
+  position: fixed;
 }
 .header .head {
   width: 50%;
@@ -13,11 +21,49 @@ body {
 .header .head a {
   float: right;
 }
+.header .login {
+  padding: 15px 60px;
+}
+.header .login a {
+  text-decoration: none;
+}
+.header .login p {
+  color: white;
+  text-decoration: none;
+}
 .home {
+  background: url('bg/5.jpg');
+  background-size: cover;
+  background-position: left;
   height: 100vh;
   width: 100%;
   display: flex;
+  margin-bottom: 50px;
 }
 .home .division {
   width: 50%;
+}
+.content .cont-recursos .rec-unico {
+  background-color: grey;
+  margin-bottom: 50px;
+  display: flex;
+}
+.content .cont-recursos .rec-unico .rec-part {
+  padding: 30px;
+  width: 50%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+.content .cont-recursos .rec-unico .rec-part img {
+  width: 100%;
+}
+.login-content {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
 }

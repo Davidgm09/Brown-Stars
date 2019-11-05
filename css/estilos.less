@@ -1,26 +1,90 @@
+// Importar fuente Raleway
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 body {
+    font-family: 'Raleway';
     overflow-x: hidden;
     margin: 0;
     padding: 0;
 }
 
+////////////PAGINAS HOME Y INDEX///////////////////
+
 .header {
     width: 100%;
     display: flex;
+    position: fixed;
     .head {
         width: 50%;
         a {
             float: right;
         }
     }
+    .login {
+        padding: 15px 60px;
+        a {
+            text-decoration: none;
+        }
+        p {
+            color: white;
+            text-decoration: none;
+        }
+    }
 }
 
-.home {
+///////////Inicio del Index//////////////
+
+.home { 
+    background: url('./bg/5.jpg');
+    background-size: cover;
+    background-position: left;
     height: 100vh;
     width: 100%;
     display: flex;
     // flex-flow: column;
+    margin-bottom: 50px;
     .division {
         width: 50%;
     }
+    .division.left {
+        // background: url('./bg/4.png');
+        // background-size: cover;
+        // background-position: left;
+    }
+}
+
+////////Contenido Recursos/////////
+
+.content {
+    .cont-recursos {
+        .rec-unico {
+            background-color: grey;
+            margin-bottom: 50px;
+            display: flex;
+            
+            .rec-part {
+                padding: 30px;
+                width: 50%;
+                display: flex;
+                flex-flow: column nowrap;
+                align-items: center;
+                justify-content: center;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+////////////////PAGINA LOGIN/////////////////
+
+.login-content {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
 }
