@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2019 a las 20:48:39
+-- Tiempo de generación: 05-11-2019 a las 16:33:47
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -45,7 +45,10 @@ CREATE TABLE `incidencia` (
 CREATE TABLE `recursos` (
   `id_recurso` int(11) NOT NULL,
   `nom_rec` varchar(20) NOT NULL,
-  `disp_rec` enum('Disponible','Ocupado') NOT NULL
+  `disp_rec` enum('Disponible','Ocupado') NOT NULL,
+  `tipo_rec` enum('Sala Multidisciplinaria','Sala Informatica','Taller de Cocina','Despacho','Sala de actos','Sala de reuniones','Proyector','Portatil','Movil') NOT NULL,
+  `imagen_rec` varchar(50) NOT NULL,
+  `desc_rec` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
