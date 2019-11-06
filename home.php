@@ -3,6 +3,7 @@
 
 <head>
     <title>Home</title>
+    <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
 </head>
 
@@ -38,9 +39,31 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
         <!-- Division del header en dos partes verticales -->
         <div class="division left">
             <!-- Filtros de busqueda -->
-            <!-- <div class="cont-filtros">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sodales mauris et ornare pharetra. Quisque blandit risus vitae ornare feugiat. Nullam at justo pharetra, egestas libero nec, posuere sapien. Pellentesque vulputate faucibus libero, sed finibus diam egestas quis. Praesent tellus mi, venenatis a libero at, maximus imperdiet elit. Nunc varius metus at elementum venenatis. Sed mattis enim dolor, a aliquet sapien tempor suscipit. </p>
-                </div> -->
+            <div class="cont-filtros">
+                <form method="POST" action="home.php">
+                    <label class="desc" id="titulo-disp">Disponibilidad:</label>
+                    <select id="field1" class="select medium" style="width: 90%" name="dispon">
+                        <option>Disponible</option>
+                        <option>Ocupado</option>
+                    </select>
+
+                    <label class="desc" id="titulo-rec">Tipo de recurso:</label>
+                    <select id="field2" class="select medium" style="width: 90%" name="recurs">
+                        <option>Todo</option>
+                        <option>Sala multidisciplinaria</option>
+                        <option>Sala informática</option>
+                        <option>Despacho</option>
+                        <option>Taller de cocina</option>
+                        <option>Sala de actos</option>
+                        <option>Sala de reuniones</option>
+                        <option>Proyector</option>
+                        <option>Portátil</option>
+                        <option>Móvil</option>
+                    </select>
+
+                    <input type="submit" name="buscar" value="Buscar">
+                </form>
+            </div>
 
         </div>
 
@@ -53,11 +76,33 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
 
     <?php
 
+    if(isset($_POST['dispon']) && isset($_POST['recurs'])) {
+        $disponibilidad=$_POST['dispon'];
+        $tiporecurso=$_POST['recurs'];
+    }else {
+        $disponibilidad='';
+        $tiporecurso='';
+    }
+
+    if(isset($_POST['dispon']) && isset($_POST['recurs'])){ // Si se ha realizado una busqueda (si estan establecidas las variables)
+        if ($_POST['recurs']=='Todo') { // Si la busqueda es TODO
+            $sql="SELECT * FROM recursos WHERE disp_rec LIKE '%$disponibilidad%'; ";
+        }else { 
+            $sql="SELECT * FROM recursos WHERE disp_rec LIKE '%$disponibilidad%' AND tipo_rec LIKE '%$tiporecurso%' ; ";
+        }
+    }else {
+        
+        $sql="SELECT * FROM recursos ; ";
+    }
+    
+	$result_query=mysqli_query($conn,$sql);
+    
+    $resultados="SELECT COUNT(id_recurso) FROM recursos WHERE disp_rec LIKE '%$disponibilidad%' AND tipo_rec LIKE '%$tiporecurso%';";
+	$resultadosnum=mysqli_query($conn,$resultados);
+
     while ($row = mysqli_fetch_array($result_query)) {
 
-
         ?>
-
 
         <div class="content">
             <div class="cont-recursos">
