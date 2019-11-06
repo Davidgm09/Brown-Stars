@@ -102,6 +102,9 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
 
     while ($row = mysqli_fetch_array($result_query)) {
 
+        $rec= $row['id_recurso'];
+
+
         ?>
 
         <div class="content">
@@ -114,6 +117,7 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
                         <h1><?php echo $row['nom_rec']; ?></h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce venenatis auctor nunc, quis viverra leo venenatis vel. Donec ac tempor nunc. Integer nec venenatis magna. Integer ut dolor magna. Curabitur sed quam at urna venenatis commodo. In dictum sapien a ex vulputate tempor sed sit amet mauris. Nam sodales finibus est, eu varius est. Nulla tellus nisi, semper vel massa et, bibendum cursus nunc. In molestie urna vitae ipsum ultricies porttitor. In hac habitasse platea dictumst.</p>
                         <h2 style="color: green;"><?php echo $row['disp_rec']; ?></h2>
+                        <a class="res-button" href="./procesa/reserva.proc.php?variableid=<?php echo $_REQUEST['variableid']; ?>&recurso=<?php echo $rec; ?>" >Reservar</a>
                     </div>
                 </div>
             </div>
