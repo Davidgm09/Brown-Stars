@@ -40,7 +40,7 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
         <div class="division left">
             <!-- Filtros de busqueda -->
             <div class="cont-filtros">
-                <form method="POST" action="home.php">
+                <form method="POST" action="home.php?variableid=<?php echo $_REQUEST['variableid']; ?>">
                     <label class="desc" id="titulo-disp">Disponibilidad:</label>
                     <select id="field1" class="select_form" style="width: 90%" name="dispon">
                         <option>Disponible</option>
