@@ -43,7 +43,7 @@ body {
     width: 100%;
     display: flex;
     // flex-flow: column;
-    margin-bottom: 50px;
+    // margin-bottom: 50px;
     .division {
         width: 50%;
     }
@@ -203,3 +203,31 @@ body {
     justify-content: center;
   }
 
+// INICIO INCIDENCIAS
+
+.div-incid {
+    width: 100%;
+    background-color: rgb(218, 218, 218);
+    display: flex!important;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0;
+    .par-incid {
+        width: 20%;
+        
+        h2 {
+            color: #e42312;
+            float: right;
+        }
+        img {
+            margin-left: 30px;
+            width: 20%;
+            // float: right;
+            transition: 0.5s;
+        }
+        img:hover {
+            transform: rotate(-20deg);
+        }
+    }
+}
