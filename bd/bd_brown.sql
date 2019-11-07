@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2019 a las 16:55:15
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.1.32
+-- Tiempo de generación: 07-11-2019 a las 16:43:03
+-- Versión del servidor: 8.0.13
+-- Versión de PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -84,13 +84,28 @@ INSERT INTO `recursos` (`id_recurso`, `nom_rec`, `disp_rec`, `tipo_rec`, `imagen
 CREATE TABLE `reserva` (
   `id_reserva` int(11) NOT NULL,
   `fecha_ini_res` date NOT NULL,
-  `fecha_fin_res` date NOT NULL,
+  `fecha_fin_res` date DEFAULT NULL,
   `hora_ini_res` time NOT NULL,
-  `hora_fin_res` time NOT NULL,
+  `hora_fin_res` time DEFAULT NULL,
+  `status_res` enum('progress','done') NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `id_incidencia` int(11) NOT NULL,
+  `id_incidencia` int(11) DEFAULT NULL,
   `id_recursos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `reserva`
+--
+
+INSERT INTO `reserva` (`id_reserva`, `fecha_ini_res`, `fecha_fin_res`, `hora_ini_res`, `hora_fin_res`, `status_res`, `id_usuario`, `id_incidencia`, `id_recursos`) VALUES
+(1, '2019-11-07', '2019-11-07', '15:16:47', '16:03:37', 'done', 1, NULL, 1),
+(2, '2019-11-07', '2019-11-07', '15:16:54', '16:11:45', 'done', 1, NULL, 3),
+(3, '2019-11-07', '2019-11-07', '15:37:46', '16:11:21', 'done', 1, NULL, 2),
+(4, '2019-11-07', '2019-11-07', '16:09:15', '16:10:39', 'done', 1, NULL, 1),
+(5, '2019-11-07', '2019-11-07', '16:10:53', '16:10:55', 'done', 1, NULL, 1),
+(6, '2019-11-07', '2019-11-07', '16:13:51', '16:37:43', 'done', 1, NULL, 5),
+(7, '2019-11-07', '2019-11-07', '16:13:58', '16:37:19', 'done', 1, NULL, 1),
+(8, '2019-11-07', '2019-11-07', '16:40:07', '16:40:13', 'done', 1, NULL, 5);
 
 -- --------------------------------------------------------
 
@@ -162,7 +177,7 @@ ALTER TABLE `recursos`
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
