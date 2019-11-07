@@ -22,8 +22,8 @@ $CAMPO5 = $_REQUEST['recurso'];
 // echo "------";
 // echo $CAMPO1;
 
-$insert = "INSERT INTO `reserva` (`id_reserva`, `fecha_ini_res`, `fecha_fin_res`, `hora_ini_res`, `hora_fin_res`, `id_usuario`, `id_incidencia`, `id_recursos`)
- VALUES ('$CAMPO1', '$CAMPO2', NULL , '$CAMPO3', NULL , '$CAMPO4', NULL , '$CAMPO5')";
+$insert = "INSERT INTO `reserva` (`id_reserva`, `fecha_ini_res`, `fecha_fin_res`, `hora_ini_res`, `hora_fin_res`,`status_res`, `id_usuario`, `id_incidencia`, `id_recursos`)
+ VALUES ('$CAMPO1', '$CAMPO2', NULL , '$CAMPO3', NULL ,'progress', '$CAMPO4', NULL , '$CAMPO5')";
 
 $update = "UPDATE recursos SET disp_rec='Ocupado' WHERE id_recurso='$CAMPO5'";
 

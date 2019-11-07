@@ -42,13 +42,13 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
             <div class="cont-filtros">
                 <form method="POST" action="home.php">
                     <label class="desc" id="titulo-disp">Disponibilidad:</label>
-                    <select id="field1" class="select medium" style="width: 90%" name="dispon">
+                    <select id="field1" class="select_form" style="width: 90%" name="dispon">
                         <option>Disponible</option>
                         <option>Ocupado</option>
                     </select>
 
                     <label class="desc" id="titulo-rec">Tipo de recurso:</label>
-                    <select id="field2" class="select medium" style="width: 90%" name="recurs">
+                    <select id="field2" class="select_form" style="width: 90%" name="recurs">
                         <option>Todo</option>
                         <option>Sala multidisciplinaria</option>
                         <option>Sala informática</option>
@@ -125,7 +125,12 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
                             ?>
                             <a class="res-button" href="./procesa/reserva.proc.php?variableid=<?php echo $_REQUEST['variableid']; ?>&recurso=<?php echo $rec; ?>" >Reservar</a>
                             <?php
-                        }//elseif($row['disp_rec']=='Ocupado' && )
+                        }elseif($row['disp_rec']=='Ocupado'// && $row['id_usuario']=variableid
+                        ){
+                            ?>
+                            <a class="res-button" href="./procesa/cerrarReserva.proc.php?variableid=<?php echo $_REQUEST['variableid']; ?>&recurso=<?php echo $rec; ?>" >Cerrar Reserva</a>
+                            <?php
+                        }
                         ?>
 
                         

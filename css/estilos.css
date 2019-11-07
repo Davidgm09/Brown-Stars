@@ -172,3 +172,15 @@ body {
   margin-top: 25px;
   justify-content: center;
 }
+
+.select_form{
+  padding: 3%;
+  font-family: 'Raleway';
+  border: none;
+  font-size: 1em;
+  
+}
+
+.desc{
+  font-size: 1.3em;
+}
