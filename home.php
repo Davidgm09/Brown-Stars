@@ -72,6 +72,18 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
 
     </div>
 
+    <!-- ////////////////INICIO INCIDENCIAS//////////// -->
+
+    <div class="div-incid">
+        <div class="par-incid">
+            <a><h2>¡Reportar incidencia!</h2></a>
+        </div>
+        
+        <div class="par-incid">
+            <img src="./img/incidencias/logo-incid.png">
+        </div>
+    </div>
+
     <!-- ////////////////INICIO CONTENT//////////////// -->
 
     <?php
@@ -89,6 +101,7 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
             $sql="SELECT * FROM recursos WHERE disp_rec LIKE '%$disponibilidad%'; ";
         }else { 
             $sql="SELECT * FROM recursos WHERE disp_rec LIKE '%$disponibilidad%' AND tipo_rec LIKE '%$tiporecurso%' ; ";
+            $sql2="SELECT * FROM `reserva` INNER JOIN `recursos` ON `reserva`.`id_recursos` = `recursos`.`id_recurso`";
         }
     }else {
         

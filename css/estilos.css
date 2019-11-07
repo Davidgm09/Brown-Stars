@@ -9,8 +9,6 @@ body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  background-color: rgb(255, 255, 255);
-
 }
 .header {
   width: 100%;
@@ -40,7 +38,6 @@ body {
   height: 100vh;
   width: 100%;
   display: flex;
-  margin-bottom: 50px;
 }
 .home .division {
   width: 50%;
@@ -69,12 +66,9 @@ body {
   margin: 15px 0;
 }
 .content .cont-recursos .rec-unico {
-  background-color: rgb(255, 255, 255);
+  background-color: grey;
   margin-bottom: 50px;
   display: flex;
-  -webkit-box-shadow: 0px 0px 39px 4px rgba(0,0,0,0.41);
--moz-box-shadow: 0px 0px 39px 4px rgba(0,0,0,0.41);
-box-shadow: 0px 0px 39px 4px rgba(0,0,0,0.41);
 }
 .content .cont-recursos .rec-unico .rec-part {
   padding: 30px;
@@ -177,15 +171,27 @@ box-shadow: 0px 0px 39px 4px rgba(0,0,0,0.41);
   margin-top: 25px;
   justify-content: center;
 }
-
-.select_form{
-  padding: 3%;
-  font-family: 'Raleway';
-  border: none;
-  font-size: 1em;
-  
+.div-incid {
+  width: 100%;
+  background-color: #dadada;
+  display: flex!important;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0;
 }
-
-.desc{
-  font-size: 1.3em;
+.div-incid .par-incid {
+  width: 20%;
+}
+.div-incid .par-incid h2 {
+  color: #e42312;
+  float: right;
+}
+.div-incid .par-incid img {
+  margin-left: 30px;
+  width: 20%;
+  transition: 0.5s;
+}
+.div-incid .par-incid img:hover {
+  transform: rotate(-20deg);
 }
