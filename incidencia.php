@@ -27,79 +27,98 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
             <!-- <p>Izquierda</p> -->
         </div>
         <div class="head login">
-            <a href="./login/index.php">
-                <p>Bienvenido, <?php echo $_SESSION['nombre']; ?> </p>
+            <a href="./index.php">
+                <p>Cerrar sesión</p>
             </a>
+            <?php
+
+if($_REQUEST['variableid'] <> 1){
+    ?><a href="home.php?variableid=<?php echo $_REQUEST['variableid']; ?>"><p>Home</p></a><?php
+}
+
+if($_REQUEST['variableid'] == 1){
+
+    ?><a href="home.php?variableid=<?php echo $_REQUEST['variableid']; ?>"><p>Home</p></a><?php
+
+}
+
+?>
+
         </div>
     </div>
 
     <!-- ////////////////INICIO Home//////////////// -->
 
-    <div class="home" style="height: 75vh!important">
+
+    <div class="home" style="height: 90vh!important">
         <!-- Division del header en dos partes verticales -->
         <div class="division left">
-            <!-- Filtros de busqueda -->
-            
-
+            <p style="font-size: 40px; text-shadow: 1px 3px 9px black;">Bienvenido, <?php echo $_SESSION['nombre']; ?></h1>
+            <p style="font-size: 20px; text-shadow: 1px 3px 9px black;">Puedes encontrar los recursos disponibles abajo</p>
         </div>
 
         <div class="division right">
-        </div>
-
-    </div>
-
-    <!-- ////////////////INICIO INCIDENCIAS//////////// -->
-
-    <div class="div-incid">
-        <div class="par-incid">
-            <a href="home.php"><h2>Home</h2></a>
             
+
         </div>
-        
-        <div class="par-incid">
-            <img src="./img/incidencias/logo-incid.png">
-        </div>
+
     </div>
 
-    <a href="perfil.php"><h2>Mi  Perfil</h2></a>
 
+      <!-- ////////////////INICIO INCIDENCIAS//////////// -->
+
+      <a style='text-decoration:none;' href="incidencia.php?variableid=<?php echo $_REQUEST['variableid']; ?>">
+    <div class="incidencias">
+        <div class="inc-div">
+            <img src="./img/incidencias/logo-inc.png" class="inc-blanco">
+            <p>¡Reporta una incidencia!</p>
+            <img src="./img/incidencias/logo-inc2.png" class="inc-rojo">
+        </div>
+    </div>
+    </a>
     <!-- ////////////////INICIO CONTENT//////////////// -->
 
-
+        <div align="center">
         <form action="./procesa/incidencia.proc.php">
+        <div class="content">
+        <div class="cont-recursos">
+            <div class="rec-unico" style="flex-flow: column; padding: 3%">
                 Titulo <br>
-                <input type="text" name="titulo" required>
+                <input class="impinci" type="text" name="titulo" required>
                 <br>
-                Descripcion:<br>
-                <input type="text" name="descripcion" required>
+                Descripcion:<br><br>
+                <input class="impinci" type="text" name="descripcion" required>
                 <br>
-                Recurso averiado:<br>
-                <select name="idres" required>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-                <option>14</option>
-                <option>15</option>
-                <option>16</option>
-                <option>17</option>
-                <option>18</option>
+                Recurso averiado:<br><br>
+                <select class="impinci" name="idres" required>
+                <option>Sala Multidisciplinària A</option>
+                <option>Sala Multidisciplinària B</option>
+                <option>Sala Multidisciplinària C</option>
+                <option>Sala Multidisciplinària D</option>
+                <option>Sala informática A</option>
+                <option>Sala informática B</option>
+                <option>Despacho A</option>
+                <option>Despacho B</option>
+                <option>Taller de cocina</option>
+                <option>Salón de Actos</option>
+                <option>Sala de reuniones</option>
+                <option>Proyector A</option>
+                <option>Proyector B</option>
+                <option>Portátil A</option>
+                <option>Portátil B</option>
+                <option>Portátil C</option>
+                <option>Móvil A</option>
+                <option>Móvil B</option>
     
                 </select>
                 <input type="hidden" name="variableid" value="<?php echo $_REQUEST['variableid']; ?>" />
                 <br><br>
-                <input type="submit" value="Submit">
+                <input type="submit" style="width: 10%; padding: 1%;" value="Submit">
+        </div>
+        </div>
+        </div>
         </form> 
-
+    <div>
 
 </body>
 

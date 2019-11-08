@@ -13,9 +13,9 @@ session_start();
 
 include "./login/services/connection.php";
 
-$sql = "SELECT * FROM `incidencia` INNER JOIN `reserva` ON `incidencia`.`id_reserva` = `reserva`.`id_reserva` INNER JOIN `recursos` ON `reserva`.`id_recursos` = `recursos`.`id_recurso` WHERE `status_inc`='progress'";
+$sql = "SELECT * FROM `incidencia` INNER JOIN `recursos` ON `incidencia`.`id_recurso` = `recursos`.`id_recurso` WHERE `status_inc`='progress'";
 
-$sqlHistorial  = "SELECT * FROM `incidencia` INNER JOIN `reserva` ON `incidencia`.`id_reserva` = `reserva`.`id_reserva` INNER JOIN `recursos` ON `reserva`.`id_recursos` = `recursos`.`id_recurso` WHERE `status_inc`='done'";
+$sqlHistorial  = "SELECT * FROM `incidencia` INNER JOIN `recursos` ON `incidencia`.`id_recurso` = `recursos`.`id_recurso` WHERE `status_inc`='done'";
 
 
 $result_query = mysqli_query($conn, $sql) or die("Algo ha ido mal en la consulta a la base de datos");
@@ -26,52 +26,61 @@ $result_queryHist = mysqli_query($conn, $sqlHistorial) or die("Algo ha ido mal e
 <body>
 
     <!-- ////////////////INICIO Header//////////////// -->
-    <div class="header">
+     <!-- ////////////////INICIO Header//////////////// -->
+     <div class="header">
         <div class="head logo">
             <!-- <p>Izquierda</p> -->
         </div>
         <div class="head login">
-            <a href="./login/index.php">
-                <p>Bienvenido, <?php echo $_SESSION['nombre']; ?> </p>
+            <a href="./index.php">
+                <p>Cerrar sesión</p>
             </a>
+            <?php
+
+if($_REQUEST['variableid'] <> 1){
+    ?><a href="home.php?variableid=<?php echo $_REQUEST['variableid']; ?>"><p>Home</p></a><?php
+}
+
+if($_REQUEST['variableid'] == 1){
+
+    ?><a href="home.php?variableid=<?php echo $_REQUEST['variableid']; ?>"><p>Home</p></a><?php
+
+}
+
+?>
+
         </div>
     </div>
 
     <!-- ////////////////INICIO Home//////////////// -->
 
-    <div class="home" style="height: 75vh!important">
+
+    <div class="home" style="height: 90vh!important">
         <!-- Division del header en dos partes verticales -->
         <div class="division left">
-           
+            <p style="font-size: 40px; text-shadow: 1px 3px 9px black;">Bienvenido, <?php echo $_SESSION['nombre']; ?></h1>
+            <p style="font-size: 20px; text-shadow: 1px 3px 9px black;">Puedes encontrar los recursos disponibles abajo</p>
+        </div>
+
+        <div class="division right">
             
 
         </div>
 
-        <div class="division right">
-        </div>
-
     </div>
 
-    <!-- ////////////////INICIO INCIDENCIAS//////////// -->
 
-    <div class="div-incid">
-        <div class="par-incid">
-            <a href="incidencia.php?variableid=<?php echo $_REQUEST['variableid']; ?>"><h2>¡Reportar incidencia!</h2></a>
-        </div>
-        
-        <div class="par-incid">
-            <img src="./img/incidencias/logo-incid.png">
+      <!-- ////////////////INICIO INCIDENCIAS//////////// -->
+
+      <a style='text-decoration:none;' href="incidencia.php?variableid=<?php echo $_REQUEST['variableid']; ?>">
+    <div class="incidencias">
+        <div class="inc-div">
+            <img src="./img/incidencias/logo-inc.png" class="inc-blanco">
+            <p>¡Reporta una incidencia!</p>
+            <img src="./img/incidencias/logo-inc2.png" class="inc-rojo">
         </div>
     </div>
-
-    <a href="home.php?variableid=<?php echo $_REQUEST['variableid']; ?>"><h2>Home</h2></a>
-
-    <?php
-
-
-    ?>
-    
-
+    </a>
     <!-- ////////////////INICIO CONTENT//////////////// -->
 
     <?php
@@ -111,7 +120,7 @@ $result_queryHist = mysqli_query($conn, $sqlHistorial) or die("Algo ha ido mal e
     <?php
     }
 
-    ?><h1>Historial de Incidencias Resueltas</h1><?php
+    ?><div align="center"><h1>Historial de Incidencias Resueltas</h1></div> <br><?php
 
     while ($row = mysqli_fetch_array($result_queryHist)) {
 

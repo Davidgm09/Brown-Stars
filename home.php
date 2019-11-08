@@ -27,22 +27,41 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
             <!-- <p>Izquierda</p> -->
         </div>
         <div class="head login">
-            <a href="./login/index.php">
-                <p>Bienvenido, <?php echo $_SESSION['nombre']; ?> </p>
+            <a href="./index.php">
+                <p>Cerrar sesión</p>
             </a>
+            <?php
+
+if($_REQUEST['variableid'] <> 1){
+    ?><a href="perfil.php?variableid=<?php echo $_REQUEST['variableid']; ?>"><p>Mi  Perfil</p></a><?php
+}
+
+if($_REQUEST['variableid'] == 1){
+
+    ?><a href="adminIncidencia.php?variableid=<?php echo $_REQUEST['variableid']; ?>"><p>Administrador de Incidencias</p></a><?php
+
+}
+
+?>
+
         </div>
     </div>
 
     <!-- ////////////////INICIO Home//////////////// -->
 
-    <div class="home" style="height: 75vh!important">
+    <div class="home" style="height: 90vh!important">
         <!-- Division del header en dos partes verticales -->
         <div class="division left">
+            <p style="font-size: 40px; text-shadow: 1px 3px 9px black;">Bienvenido, <?php echo $_SESSION['nombre']; ?></h1>
+            <p style="font-size: 20px; text-shadow: 1px 3px 9px black;">Puedes encontrar los recursos disponibles abajo</p>
+        </div>
+
+        <div class="division right">
             <!-- Filtros de busqueda -->
             <div class="cont-filtros">
                 <form method="POST" action="home.php?variableid=<?php echo $_REQUEST['variableid']; ?>">
-                    <label class="desc" id="titulo-disp">Disponibilidad:</label>
-                    <select id="field1" class="select_form" style="width: 90%" name="dispon">
+                    <label class="desc" id="titulo-disp">Disponibilidad:</label> <!-- Primer titulo -->
+                    <select id="field1" class="select medium" style="width: 90%" name="dispon"> <!-- Select disponibilidad -->
                         <option>Disponible</option>
                         <option>Ocupado</option>
                     </select>
@@ -61,43 +80,27 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
                         <option>Móvil</option>
                     </select>
 
+                    
+
                     <input type="submit" name="buscar" value="Buscar">
                 </form>
             </div>
 
         </div>
 
-        <div class="division right">
-        </div>
-
     </div>
 
     <!-- ////////////////INICIO INCIDENCIAS//////////// -->
-
-    <div class="div-incid">
-        <div class="par-incid">
-            <a href="incidencia.php?variableid=<?php echo $_REQUEST['variableid']; ?>"><h2>¡Reportar incidencia!</h2></a>
-        </div>
-        
-        <div class="par-incid">
-            <img src="./img/incidencias/logo-incid.png">
+    <a style='text-decoration:none;' href="incidencia.php?variableid=<?php echo $_REQUEST['variableid']; ?>">
+    <div class="incidencias">
+        <div class="inc-div">
+            <img src="./img/incidencias/logo-inc.png" class="inc-blanco">
+            <p>¡Reporta una incidencia!</p>
+            <img src="./img/incidencias/logo-inc2.png" class="inc-rojo">
         </div>
     </div>
-
-    <?php
-
-    if($_REQUEST['variableid'] <> 1){
-        ?><a href="perfil.php?variableid=<?php echo $_REQUEST['variableid']; ?>"><h2>Mi  Perfil</h2></a><?php
-    }
-
-    if($_REQUEST['variableid'] == 1){
-
-        ?><a href="adminIncidencia.php?variableid=<?php echo $_REQUEST['variableid']; ?>"><h2>Administrador de Incidencias</h2></a><?php
-
-    }
-
-    ?>
-    
+    </a>
+   
 
     <!-- ////////////////INICIO CONTENT//////////////// -->
 
@@ -143,8 +146,17 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
                     </div>
                     <div class="rec-part">
                         <h1><?php echo $row['nom_rec']; ?></h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce venenatis auctor nunc, quis viverra leo venenatis vel. Donec ac tempor nunc. Integer nec venenatis magna. Integer ut dolor magna. Curabitur sed quam at urna venenatis commodo. In dictum sapien a ex vulputate tempor sed sit amet mauris. Nam sodales finibus est, eu varius est. Nulla tellus nisi, semper vel massa et, bibendum cursus nunc. In molestie urna vitae ipsum ultricies porttitor. In hac habitasse platea dictumst.</p>
-                        <h2 style="color: green;"><?php echo $row['disp_rec']; ?></h2>
+                        <p><?php echo $row['desc_rec']; ?></p>
+                        
+                        <?php if($row['disp_rec']=='Disponible'){
+
+                            ?><h2 style="color: green;"><?php echo $row['disp_rec']; ?></h2><?php
+
+                        }else{
+                            ?><h2 style="color: #e42312;"><?php echo $row['disp_rec']; ?></h2><?php
+                        }
+
+                        ?>
 
                         <?php
 
