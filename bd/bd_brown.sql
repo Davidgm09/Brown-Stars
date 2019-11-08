@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2019 a las 18:06:52
--- Versión del servidor: 8.0.13
--- Versión de PHP: 7.3.2
+-- Tiempo de generación: 08-11-2019 a las 03:33:49
+-- Versión del servidor: 10.4.8-MariaDB
+-- Versión de PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,7 +32,7 @@ USE `bd_brown`;
 
 CREATE TABLE `incidencia` (
   `id_incidencia` int(11) NOT NULL,
-  `titulo_inci` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `titulo_inci` varchar(50) NOT NULL,
   `descrip_ini` text NOT NULL,
   `fecha_ini_inc` date NOT NULL,
   `fecha_fin_inc` date DEFAULT NULL,
@@ -41,6 +41,16 @@ CREATE TABLE `incidencia` (
   `status_inc` enum('progress','done') NOT NULL,
   `id_reserva` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `incidencia`
+--
+
+INSERT INTO `incidencia` (`id_incidencia`, `titulo_inci`, `descrip_ini`, `fecha_ini_inc`, `fecha_fin_inc`, `hora_ini_inc`, `hora_fin_inc`, `status_inc`, `id_reserva`) VALUES
+(1, 'prueba', 'des  de  prueba', '2019-11-08', '2019-11-08', '02:02:50', '02:53:48', 'done', 4),
+(2, 'sdadasfd', 'sadfgsgsfgsdg', '2019-11-08', '2019-11-08', '02:12:35', '03:00:42', 'done', 1),
+(3, 'sdfasdfsadfsa', 'sadfsdfasdfsfsgsdfgdsfhfgd', '2019-11-08', '2019-11-08', '03:21:06', '03:33:21', 'done', 11),
+(4, 'dfasdfasdf', 'sadfasdfas', '2019-11-08', '2019-11-08', '03:29:16', '03:32:08', 'done', 1);
 
 -- --------------------------------------------------------
 
@@ -62,7 +72,7 @@ CREATE TABLE `recursos` (
 --
 
 INSERT INTO `recursos` (`id_recurso`, `nom_rec`, `disp_rec`, `tipo_rec`, `imagen_rec`, `desc_rec`) VALUES
-(1, 'Sala Multidisciplinària A', 'Ocupado', 'Sala Multidisciplinaria', './img/recursos/SalaMultA.png', ''),
+(1, 'Sala Multidisciplinària A', 'Disponible', 'Sala Multidisciplinaria', './img/recursos/SalaMultA.png', ''),
 (2, 'Sala Multidisciplinària B', 'Disponible', 'Sala Multidisciplinaria', './img/recursos/SalaMultB.png', ''),
 (3, 'Sala Multidisciplinària C', 'Disponible', 'Sala Multidisciplinaria', './img/recursos/SalaMultC.png', ''),
 (4, 'Sala Multidisciplinària D', 'Disponible', 'Sala Multidisciplinaria', './img/recursos/SalaMultD.png', ''),
@@ -112,7 +122,10 @@ INSERT INTO `reserva` (`id_reserva`, `fecha_ini_res`, `fecha_fin_res`, `hora_ini
 (7, '2019-11-07', '2019-11-07', '16:13:58', '16:37:19', 'done', 1, 1),
 (8, '2019-11-07', '2019-11-07', '16:40:07', '16:40:13', 'done', 1, 5),
 (9, '2019-11-07', '2019-11-07', '16:51:09', '16:51:34', 'done', 1, 1),
-(10, '2019-11-07', NULL, '17:02:06', NULL, 'progress', 3, 1);
+(10, '2019-11-07', '2019-11-08', '17:02:06', '01:37:07', 'done', 3, 1),
+(11, '2019-11-08', '2019-11-08', '01:35:52', '01:37:13', 'done', 3, 3),
+(12, '2019-11-08', '2019-11-08', '01:36:11', '01:37:28', 'done', 1, 2),
+(13, '2019-11-08', '2019-11-08', '03:20:48', '03:20:52', 'done', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -173,7 +186,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `incidencia`
 --
 ALTER TABLE `incidencia`
-  MODIFY `id_incidencia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_incidencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `recursos`
@@ -185,7 +198,7 @@ ALTER TABLE `recursos`
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

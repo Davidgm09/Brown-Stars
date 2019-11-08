@@ -76,13 +76,28 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
 
     <div class="div-incid">
         <div class="par-incid">
-            <a><h2>¡Reportar incidencia!</h2></a>
+            <a href="incidencia.php?variableid=<?php echo $_REQUEST['variableid']; ?>"><h2>¡Reportar incidencia!</h2></a>
         </div>
         
         <div class="par-incid">
             <img src="./img/incidencias/logo-incid.png">
         </div>
     </div>
+
+    <?php
+
+    if($_REQUEST['variableid'] <> 1){
+        ?><a href="perfil.php?variableid=<?php echo $_REQUEST['variableid']; ?>"><h2>Mi  Perfil</h2></a><?php
+    }
+
+    if($_REQUEST['variableid'] == 1){
+
+        ?><a href="adminIncidencia.php?variableid=<?php echo $_REQUEST['variableid']; ?>"><h2>Administrador de Incidencias</h2></a><?php
+
+    }
+
+    ?>
+    
 
     <!-- ////////////////INICIO CONTENT//////////////// -->
 
@@ -101,7 +116,7 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
             $sql="SELECT * FROM recursos WHERE disp_rec LIKE '%$disponibilidad%'; ";
         }else { 
             $sql="SELECT * FROM recursos WHERE disp_rec LIKE '%$disponibilidad%' AND tipo_rec LIKE '%$tiporecurso%' ; ";
-            $sql2="SELECT * FROM `reserva` INNER JOIN `recursos` ON `reserva`.`id_recursos` = `recursos`.`id_recurso`";
+            
         }
     }else {
         
@@ -138,11 +153,25 @@ $result_query = mysqli_query($conn, $query) or die("Algo ha ido mal en la consul
                             ?>
                             <a class="res-button" href="./procesa/reserva.proc.php?variableid=<?php echo $_REQUEST['variableid']; ?>&recurso=<?php echo $rec; ?>" >Reservar</a>
                             <?php
-                        }elseif($row['disp_rec']=='Ocupado'// && $row['id_usuario']=variableid
-                        ){
-                            ?>
+                        }elseif($row['disp_rec']=='Ocupado'){
+
+                            $sql2="SELECT * FROM `reserva` INNER JOIN `recursos` ON `reserva`.`id_recursos` = `recursos`.`id_recurso` WHERE `recursos`.`id_recurso`=$rec AND `reserva`.`status_res`='progress'";
+                            $resultqid = mysqli_query($conn,$sql2);
+                            $rowid2 = mysqli_fetch_array($resultqid);
+                            $iduser2 = $rowid2['id_usuario'];
+
+                            //echo $iduser2;
+                            //echo $_REQUEST['variableid'];
+
+
+                            if($iduser2==$_REQUEST['variableid']){
+
+                                ?>
                             <a class="res-button" href="./procesa/cerrarReserva.proc.php?variableid=<?php echo $_REQUEST['variableid']; ?>&recurso=<?php echo $rec; ?>" >Cerrar Reserva</a>
                             <?php
+
+                            }
+                            
                         }
                         ?>
 
