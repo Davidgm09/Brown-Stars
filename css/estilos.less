@@ -47,7 +47,7 @@ body {
     .division {
         width: 50%;
     }
-    .division.left {
+    .division {
         // background: url('./bg/4.png');
         // background-size: cover;
         // background-position: left;
@@ -63,6 +63,9 @@ body {
             background-color: rgba(255, 255, 255, 0.733);
             padding: 15px 50px;
             form {
+                label {
+                    font-size: 22px;
+                }
                 display: flex;
                 flex-flow: column nowrap;
                 align-items: center;
@@ -73,6 +76,10 @@ body {
             }
         }
     }
+    .left {
+        color: white;
+        font-size: 1.6rem;
+    }
 }
 
 ////////Contenido Recursos/////////
@@ -80,9 +87,12 @@ body {
 .content {
     .cont-recursos {
         .rec-unico {
-            background-color: grey;
+            background-color: rgb(226, 226, 226);
             margin-bottom: 50px;
             display: flex;
+            height: 300px;
+            overflow: hidden;
+            transition: 0.6s;
             
             .rec-part {
                 padding: 30px;
@@ -93,9 +103,15 @@ body {
                 justify-content: center;
                 img {
                     width: 100%;
+                    border: 15px solid #cacaca;
                 }
             }
         }
+    }
+}
+.content:hover {
+    .rec-unico {
+        box-shadow: 0 0 8px #686868d5;
     }
 }
 
@@ -203,31 +219,89 @@ body {
     justify-content: center;
   }
 
+
+
+
+/////////////////////////A PARTIR DE AQUI ES NUEVO CONTENIDO!!//////////////////////////
+
+
 // INICIO INCIDENCIAS
 
-.div-incid {
-    width: 100%;
-    background-color: rgb(218, 218, 218);
-    display: flex!important;
+.incidencias {
+    transition: 0.4s;
+    height: 10vh;
+    display: flex;
     flex-flow: row;
     align-items: center;
     justify-content: center;
-    padding: 15px 0;
-    .par-incid {
-        width: 20%;
-        
-        h2 {
-            color: #e42312;
-            float: right;
-        }
+    background-color: rgb(226, 226, 226);
+    margin-bottom: 50px;
+    color: #e42312;
+    box-shadow: 0px 4px 15px 0px #b3b3b3e6;
+    .inc-div {
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        justify-content: center;    
         img {
-            margin-left: 30px;
-            width: 20%;
-            // float: right;
-            transition: 0.5s;
+            width: 5%;
         }
-        img:hover {
-            transform: rotate(-20deg);
+        p {
+            margin: 0 50px;
+
         }
+    }
+}
+
+.incidencias:hover {
+    background-color: #e42312;
+    color: white;
+    .inc-blanco {opacity: 0;}
+    .inc-rojo {opacity: 1;}
+}
+
+.rec-part {
+    h1 {
+        font-size: 25px;
+        color: grey;
+    }
+    p {
+        font-size: 14px;
+        display: -webkit-box;
+        -webkit-line-clamp: 4!important;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-family: Arial!important;
+        color: #616161;
+    }
+    h2 {
+        color: green;
+        font-size: 17px;
+        margin: 10px 0 25px;
+    }
+    .res-button {
+        text-decoration: none;
+        background-color: #b7b7b7;
+        color: black;
+        padding: 8px;
+        font-size: 13px;
+        color: #525252; 
+    }
+}
+
+.cont-filtros {
+    .select_form,.select {
+        width: 100%;
+        height: 30px;
+    }
+    input {
+        width: 30%;
+        height: 30px;
+    }
+}
+
+.head.login {
+    a {
+        margin-left: 50px;
     }
 }

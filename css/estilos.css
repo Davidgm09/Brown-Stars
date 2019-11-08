@@ -42,33 +42,43 @@ body {
 .home .division {
   width: 50%;
 }
-.home .division.left {
+.home .division {
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
   padding: 5%;
 }
-.home .division.left .cont-filtros {
+.home .division .cont-filtros {
   width: 50%;
   background-color: rgba(255, 255, 255, 0.733);
   padding: 15px 50px;
 }
-.home .division.left .cont-filtros form {
+.home .division .cont-filtros form {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
 }
-.home .division.left .cont-filtros form input,
-.home .division.left .cont-filtros form select,
-.home .division.left .cont-filtros form label {
+.home .division .cont-filtros form label {
+  font-size: 22px;
+}
+.home .division .cont-filtros form input,
+.home .division .cont-filtros form select,
+.home .division .cont-filtros form label {
   margin: 15px 0;
 }
+.home .left {
+  color: white;
+  font-size: 1.6rem;
+}
 .content .cont-recursos .rec-unico {
-  background-color: grey;
+  background-color: #e2e2e2;
   margin-bottom: 50px;
   display: flex;
+  height: 300px;
+  overflow: hidden;
+  transition: 0.6s;
 }
 .content .cont-recursos .rec-unico .rec-part {
   padding: 30px;
@@ -80,6 +90,10 @@ body {
 }
 .content .cont-recursos .rec-unico .rec-part img {
   width: 100%;
+  border: 15px solid #cacaca;
+}
+.content:hover .rec-unico {
+  box-shadow: 0 0 8px #686868d5;
 }
 .login-content {
   height: 100vh;
@@ -171,27 +185,75 @@ body {
   margin-top: 25px;
   justify-content: center;
 }
-.div-incid {
-  width: 100%;
-  background-color: #dadada;
-  display: flex!important;
+.incidencias {
+  transition: 0.4s;
+  height: 10vh;
+  display: flex;
   flex-flow: row;
   align-items: center;
   justify-content: center;
-  padding: 15px 0;
-}
-.div-incid .par-incid {
-  width: 20%;
-}
-.div-incid .par-incid h2 {
+  background-color: #e2e2e2;
+  margin-bottom: 50px;
   color: #e42312;
-  float: right;
+  box-shadow: 0px 4px 15px 0px #b3b3b3e6;
 }
-.div-incid .par-incid img {
-  margin-left: 30px;
-  width: 20%;
-  transition: 0.5s;
+.incidencias .inc-div {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
 }
-.div-incid .par-incid img:hover {
-  transform: rotate(-20deg);
+.incidencias .inc-div img {
+  width: 5%;
+}
+.incidencias .inc-div p {
+  margin: 0 50px;
+}
+.incidencias:hover {
+  background-color: #e42312;
+  color: white;
+}
+.incidencias:hover .inc-blanco {
+  opacity: 0;
+}
+.incidencias:hover .inc-rojo {
+  opacity: 1;
+}
+.rec-part h1 {
+  font-size: 25px;
+  color: grey;
+}
+.rec-part p {
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4!important;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-family: Arial!important;
+  color: #616161;
+}
+.rec-part h2 {
+  color: green;
+  font-size: 17px;
+  margin: 10px 0 25px;
+}
+.rec-part .res-button {
+  text-decoration: none;
+  background-color: #b7b7b7;
+  color: black;
+  padding: 8px;
+  font-size: 13px;
+  color: #525252;
+}
+.cont-filtros .select_form,
+.cont-filtros .select {
+  width: 100%;
+  height: 30px;
+}
+.cont-filtros input {
+  width: 30%;
+  height: 30px;
+}
+.head.login a {
+  margin-left: 50px;
 }
