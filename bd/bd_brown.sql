@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2019 a las 03:33:49
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.3.11
+-- Tiempo de generación: 08-11-2019 a las 16:58:46
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -39,18 +39,25 @@ CREATE TABLE `incidencia` (
   `hora_ini_inc` time NOT NULL,
   `hora_fin_inc` time DEFAULT NULL,
   `status_inc` enum('progress','done') NOT NULL,
-  `id_reserva` int(11) NOT NULL
+  `id_recurso` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `incidencia`
 --
 
-INSERT INTO `incidencia` (`id_incidencia`, `titulo_inci`, `descrip_ini`, `fecha_ini_inc`, `fecha_fin_inc`, `hora_ini_inc`, `hora_fin_inc`, `status_inc`, `id_reserva`) VALUES
-(1, 'prueba', 'des  de  prueba', '2019-11-08', '2019-11-08', '02:02:50', '02:53:48', 'done', 4),
-(2, 'sdadasfd', 'sadfgsgsfgsdg', '2019-11-08', '2019-11-08', '02:12:35', '03:00:42', 'done', 1),
-(3, 'sdfasdfsadfsa', 'sadfsdfasdfsfsgsdfgdsfhfgd', '2019-11-08', '2019-11-08', '03:21:06', '03:33:21', 'done', 11),
-(4, 'dfasdfasdf', 'sadfasdfas', '2019-11-08', '2019-11-08', '03:29:16', '03:32:08', 'done', 1);
+INSERT INTO `incidencia` (`id_incidencia`, `titulo_inci`, `descrip_ini`, `fecha_ini_inc`, `fecha_fin_inc`, `hora_ini_inc`, `hora_fin_inc`, `status_inc`, `id_recurso`, `id_usuario`) VALUES
+(1, 'prueba', 'des  de  prueba', '2019-11-08', '2019-11-08', '02:02:50', '02:53:48', 'done', 4, 3),
+(2, 'sdadasfd', 'sadfgsgsfgsdg', '2019-11-08', '2019-11-08', '02:12:35', '03:00:42', 'done', 1, 1),
+(3, 'sdfasdfsadfsa', 'sadfsdfasdfsfsgsdfgdsfhfgd', '2019-11-08', '2019-11-08', '03:21:06', '03:33:21', 'done', 11, 3),
+(4, 'dfasdfasdf', 'sadfasdfas', '2019-11-08', '2019-11-08', '03:29:16', '03:32:08', 'done', 1, 1),
+(5, 'dsaaSasf', 'afasdfasdgas', '2019-11-08', '2019-11-08', '15:17:51', '15:18:43', 'done', 11, 1),
+(6, 'pruebaaaaaaaa', 'sdfasdgsfahadfhndsghfds', '2019-11-08', '2019-11-08', '15:19:30', '16:17:04', 'done', 9, 3),
+(7, 'asdasdsadasd', 'sadasasdasdsa', '2019-11-08', '2019-11-08', '15:48:24', '16:17:05', 'done', 13, 1),
+(8, 'XCVZCBZVCN', 'CVBXCBXCVBXC', '2019-11-08', '2019-11-08', '15:55:19', '16:17:07', 'done', 12, 3),
+(9, 'SADAfd', 'sadfsadfasdfsadf', '2019-11-08', '2019-11-08', '15:55:44', '16:17:08', 'done', 13, 3),
+(10, 'HHHHHHHHHH', 'FFFFFFFFFFFF', '2019-11-08', '2019-11-08', '16:47:20', '16:48:48', 'done', 16, 3);
 
 -- --------------------------------------------------------
 
@@ -72,24 +79,24 @@ CREATE TABLE `recursos` (
 --
 
 INSERT INTO `recursos` (`id_recurso`, `nom_rec`, `disp_rec`, `tipo_rec`, `imagen_rec`, `desc_rec`) VALUES
-(1, 'Sala Multidisciplinària A', 'Disponible', 'Sala Multidisciplinaria', './img/recursos/SalaMultA.png', ''),
-(2, 'Sala Multidisciplinària B', 'Disponible', 'Sala Multidisciplinaria', './img/recursos/SalaMultB.png', ''),
-(3, 'Sala Multidisciplinària C', 'Disponible', 'Sala Multidisciplinaria', './img/recursos/SalaMultC.png', ''),
-(4, 'Sala Multidisciplinària D', 'Disponible', 'Sala Multidisciplinaria', './img/recursos/SalaMultD.png', ''),
-(5, 'Sala informática A', 'Disponible', 'Sala Informatica', './img/recursos/SalaInfoA.png', ''),
-(6, 'Sala informática B', 'Disponible', 'Sala Informatica', './img/recursos/SalaInfoB.png', ''),
-(7, 'Despacho A', 'Disponible', 'Despacho', './img/recursos/DespachoA.png', ''),
-(8, 'Despacho B', 'Disponible', 'Despacho', './img/recursos/DespachoB.png', ''),
-(9, 'Taller de cocina', 'Disponible', 'Taller de Cocina', './img/recursos/TallerCocina.png', ''),
-(10, 'Salón de Actos', 'Disponible', 'Sala de actos', './img/recursos/SalonActos.png', ''),
-(11, 'Sala de reuniones', 'Disponible', 'Sala de reuniones', './img/recursos/SalaReuniones.png', ''),
-(12, 'Proyector A', 'Disponible', 'Proyector', './img/recursos/ProyectorA.png', ''),
-(13, 'Proyector B', 'Disponible', 'Proyector', './img/recursos/ProyectorB.png', ''),
-(14, 'Portátil A', 'Disponible', 'Portatil', './img/recursos/PortatilA.png', ''),
-(15, 'Portátil B', 'Disponible', 'Portatil', './img/recursos/PortatilB.png', ''),
-(16, 'Portátil C', 'Disponible', 'Portatil', './img/recursos/PortatilC.png', ''),
-(17, 'Móvil A', 'Disponible', 'Movil', './img/recursos/MovilA.png', ''),
-(18, 'Móvil B', 'Disponible', 'Movil', './img/recursos/MovilB.png', '');
+(1, 'Sala Multidisciplinària A', 'Ocupado', 'Sala Multidisciplinaria', './img/recursos/SalaMultA.png', 'Sala Multidisciplinaria preparada para clases de ioga.'),
+(2, 'Sala Multidisciplinària B', 'Disponible', 'Sala Multidisciplinaria', './img/recursos/SalaMultB.png', 'Sala Multidisciplinaria preparada para clases de baile.'),
+(3, 'Sala Multidisciplinària C', 'Disponible', 'Sala Multidisciplinaria', './img/recursos/SalaMultC.png', 'Sala Multidisciplinaria preparada para hacer presentaciones con un proyector.'),
+(4, 'Sala Multidisciplinària D', 'Disponible', 'Sala Multidisciplinaria', './img/recursos/SalaMultD.png', 'Sala Multidisciplinaria preparada para hacer juegos, con mesa de ping pong y futbolin.'),
+(5, 'Sala informática A', 'Disponible', 'Sala Informatica', './img/recursos/SalaInfoA.png', 'Sala de Informatica que dispone con mas de 15 equipos de sobremesa.'),
+(6, 'Sala informática B', 'Disponible', 'Sala Informatica', './img/recursos/SalaInfoB.png', 'Sala de Informatica que dispone con 5 macs y mas de 20 equipos de sobremesa.'),
+(7, 'Despacho A', 'Disponible', 'Despacho', './img/recursos/DespachoA.png', 'Despacho preparado para cualquier entrevista que dispone de un telefono fijo.'),
+(8, 'Despacho B', 'Disponible', 'Despacho', './img/recursos/DespachoB.png', 'Despacho preparado para cualquier entrevista que dispone de un pc de sobremesa.'),
+(9, 'Taller de cocina', 'Disponible', 'Taller de Cocina', './img/recursos/TallerCocina.png', 'Taller de cocina preparado con todo lo necesario para cocinar con todos los utensilios.'),
+(10, 'Salón de Actos', 'Disponible', 'Sala de actos', './img/recursos/SalonActos.png', 'Salon de actos con capacidad para 150 personas y dispone de diferentes altavoces.'),
+(11, 'Sala de reuniones', 'Disponible', 'Sala de reuniones', './img/recursos/SalaReuniones.png', 'Sala de reuniones con capacidad para 12 personas que dispone de una TV.'),
+(12, 'Proyector A', 'Disponible', 'Proyector', './img/recursos/ProyectorA.png', 'Proyector EPSON de color negro portable ya configurado y preparado para la proyeccion.'),
+(13, 'Proyector B', 'Disponible', 'Proyector', './img/recursos/ProyectorB.png', 'Proyector EPSON de color blanco portable ya configurado y preparado para la proyeccion.'),
+(14, 'Portátil A', 'Disponible', 'Portatil', './img/recursos/PortatilA.png', 'Portatil ASUS VivoBoock acabado de metal pulido, procesador Intel® Core™ i7, 12 GB de RAM y gráfica NVIDIA® GeForce® 940MX*.'),
+(15, 'Portátil B', 'Disponible', 'Portatil', './img/recursos/PortatilB.png', 'Portatil Xiaomi Mi Notebook Air 12.5 tiene  12,5 pulgadas, con un procesador M3, 128 GB de almacenamiento y 4 GB de RAM.'),
+(16, 'Portátil C', 'Disponible', 'Portatil', './img/recursos/PortatilC.png', 'Portatil LG Gram 15Z990 cuenta como motor con un procesador Intel Core i7-8565U de cuatro núcleos a 1,8 GHz (hasta 4,6 GHz), con hasta 16 GB de RAM y 512 GB de almacenamiento.'),
+(17, 'Móvil A', 'Disponible', 'Movil', './img/recursos/MovilA.png', 'Movil A, Iphone 5 con 64GB color negro.'),
+(18, 'Móvil B', 'Disponible', 'Movil', './img/recursos/MovilB.png', 'Movil B, Samsung Galaxy A10 con 64GB color gris.');
 
 -- --------------------------------------------------------
 
@@ -125,7 +132,9 @@ INSERT INTO `reserva` (`id_reserva`, `fecha_ini_res`, `fecha_fin_res`, `hora_ini
 (10, '2019-11-07', '2019-11-08', '17:02:06', '01:37:07', 'done', 3, 1),
 (11, '2019-11-08', '2019-11-08', '01:35:52', '01:37:13', 'done', 3, 3),
 (12, '2019-11-08', '2019-11-08', '01:36:11', '01:37:28', 'done', 1, 2),
-(13, '2019-11-08', '2019-11-08', '03:20:48', '03:20:52', 'done', 3, 1);
+(13, '2019-11-08', '2019-11-08', '03:20:48', '03:20:52', 'done', 3, 1),
+(14, '2019-11-08', NULL, '15:22:31', NULL, 'progress', 3, 1),
+(15, '2019-11-08', '2019-11-08', '15:54:04', '15:54:11', 'done', 3, 15);
 
 -- --------------------------------------------------------
 
@@ -156,7 +165,8 @@ INSERT INTO `usuarios` (`id_usuario`, `nom_usu`, `pass_usu`) VALUES
 --
 ALTER TABLE `incidencia`
   ADD PRIMARY KEY (`id_incidencia`),
-  ADD KEY `id_reserva` (`id_reserva`);
+  ADD KEY `id_reserva` (`id_recurso`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `recursos`
@@ -186,7 +196,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `incidencia`
 --
 ALTER TABLE `incidencia`
-  MODIFY `id_incidencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_incidencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `recursos`
@@ -198,7 +208,7 @@ ALTER TABLE `recursos`
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -214,7 +224,7 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `incidencia`
 --
 ALTER TABLE `incidencia`
-  ADD CONSTRAINT `incidencia_ibfk_1` FOREIGN KEY (`id_reserva`) REFERENCES `reserva` (`id_reserva`);
+  ADD CONSTRAINT `incidencia_ibfk_1` FOREIGN KEY (`id_recurso`) REFERENCES `recursos` (`id_recurso`);
 
 --
 -- Filtros para la tabla `reserva`
